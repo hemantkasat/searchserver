@@ -12,7 +12,6 @@ def create_schema():
     return schema
 
 def add_pdf(docid, title, abstract):
-    #ix = index.open_dir("indexdir")
     writer = ix.writer()
     writer.add_document(docid=docid, title=title, abstract=abstract)
     writer.commit()
@@ -36,20 +35,6 @@ def search(query, type1, type2):
     else:
         return None
 
-
-schema = create_schema()
-if not os.path.exists("indexdir"):
-    os.mkdir("indexdir")
-    #static_index()
-
-ix = index.create_in("indexdir", schema)
-add_pdf(u'1',u'COMPACT NEURAL NETWORKS BASED ON THE MULTISCALE ENTANGLEMENT RENORMALIZATION ANSATZ',u'This paper demonstrates a method for tensorizing neural networks')
-add_pdf(u'2',u'Weakly Supervised Action Localization by Sparse Temporal Pooling Network',u'We propose a weakly supervised temporal action local- ization algorithm on untrimmed videos using convolutional neural networks')
-add_pdf(u'3',u'A Robust Real-Time Automatic License Plate Recognition based on the YOLO Detector',u'Automatic License Plate Recognition (ALPR) has been a frequent topic of research due to many practical ap- plications. MULTISCALE')
-while True:
-    query= input()
-    result = search(query,"title","abstract")
-    print(result)
 
 
 
